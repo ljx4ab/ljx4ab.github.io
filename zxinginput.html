@@ -23,7 +23,7 @@ function getZxing(){
         href = href.substr(0, ptr);
     }
     //setTimeout(function(){gettingZXing = false}, 20000);// in case you cancel, or an error occurs.
-    window.location.href = ("zxing://scan/?ret=" + escape(href + "#zx{CODE}"));
+    window.location.href = ("zxing://scan/?ret=" + escape(href + "#{CODE}"));
 
     //window won't actually be replaced. This just prevents both the browser AND zxing from opening a new window.'
 }
