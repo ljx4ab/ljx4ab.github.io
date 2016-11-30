@@ -7,14 +7,7 @@
 //This entire block of script should be in a separate file, and included in each doc in which you want scanner capabilities
 
 var gettingZXing = false;
-if(window.location.hash.substr(1,2) == "zx"){
-    var bc = window.location.hash.substr(3);
-    bc = unescape(bc);
-    localStorage["barcode"] = bc;
-    window.close();
-    self.close();
-    window.location.href="about:blank";//In case self.close isn't allowed
-}
+
 function getZxing(){
     gettingZXing = true;
     var href = window.location.href;
@@ -33,17 +26,6 @@ window.addEventListener("hashchange", function(ev){
         window.location.hash = "";
         processBarcode(unescape(hash));
     }   
-}, false);
-
-window.addEventListener("storage", function(event){
-    if(gettingZXing == true){
-        gettingZXing = false;
-        localStorage["barcode"] = "";
-        if(event.url.split("\#")[0] == window.location.href){
-            window.focus();
-            processBarcode(unescape(event.newValue));
-        }
-    }
 }, false);
 
             function processBarcode(b){
